@@ -21,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ReadMulitple struct {
+type SingleRead struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	MainPhotoId   int32                  `protobuf:"varint,2,opt,name=main_photo_id,json=mainPhotoId,proto3" json:"main_photo_id,omitempty"`
@@ -29,20 +29,20 @@ type ReadMulitple struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReadMulitple) Reset() {
-	*x = ReadMulitple{}
+func (x *SingleRead) Reset() {
+	*x = SingleRead{}
 	mi := &file_user_responses_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReadMulitple) String() string {
+func (x *SingleRead) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReadMulitple) ProtoMessage() {}
+func (*SingleRead) ProtoMessage() {}
 
-func (x *ReadMulitple) ProtoReflect() protoreflect.Message {
+func (x *SingleRead) ProtoReflect() protoreflect.Message {
 	mi := &file_user_responses_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -54,46 +54,46 @@ func (x *ReadMulitple) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReadMulitple.ProtoReflect.Descriptor instead.
-func (*ReadMulitple) Descriptor() ([]byte, []int) {
+// Deprecated: Use SingleRead.ProtoReflect.Descriptor instead.
+func (*SingleRead) Descriptor() ([]byte, []int) {
 	return file_user_responses_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ReadMulitple) GetUserId() int32 {
+func (x *SingleRead) GetUserId() int32 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-func (x *ReadMulitple) GetMainPhotoId() int32 {
+func (x *SingleRead) GetMainPhotoId() int32 {
 	if x != nil {
 		return x.MainPhotoId
 	}
 	return 0
 }
 
-type ReadMultipleResponse struct {
+type MultipleReadResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Res           []*ReadMulitple        `protobuf:"bytes,1,rep,name=res,proto3" json:"res,omitempty"`
+	GridProfiles  []*SingleRead          `protobuf:"bytes,1,rep,name=grid_profiles,json=gridProfiles,proto3" json:"grid_profiles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReadMultipleResponse) Reset() {
-	*x = ReadMultipleResponse{}
+func (x *MultipleReadResponse) Reset() {
+	*x = MultipleReadResponse{}
 	mi := &file_user_responses_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReadMultipleResponse) String() string {
+func (x *MultipleReadResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReadMultipleResponse) ProtoMessage() {}
+func (*MultipleReadResponse) ProtoMessage() {}
 
-func (x *ReadMultipleResponse) ProtoReflect() protoreflect.Message {
+func (x *MultipleReadResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_user_responses_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -105,14 +105,14 @@ func (x *ReadMultipleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReadMultipleResponse.ProtoReflect.Descriptor instead.
-func (*ReadMultipleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MultipleReadResponse.ProtoReflect.Descriptor instead.
+func (*MultipleReadResponse) Descriptor() ([]byte, []int) {
 	return file_user_responses_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ReadMultipleResponse) GetRes() []*ReadMulitple {
+func (x *MultipleReadResponse) GetGridProfiles() []*SingleRead {
 	if x != nil {
-		return x.Res
+		return x.GridProfiles
 	}
 	return nil
 }
@@ -121,12 +121,13 @@ var File_user_responses_proto protoreflect.FileDescriptor
 
 const file_user_responses_proto_rawDesc = "" +
 	"\n" +
-	"\x14user_responses.proto\"K\n" +
-	"\fReadMulitple\x12\x17\n" +
+	"\x14user_responses.proto\"I\n" +
+	"\n" +
+	"SingleRead\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x05R\x06userId\x12\"\n" +
-	"\rmain_photo_id\x18\x02 \x01(\x05R\vmainPhotoId\"7\n" +
-	"\x14ReadMultipleResponse\x12\x1f\n" +
-	"\x03res\x18\x01 \x03(\v2\r.ReadMulitpleR\x03resB\x0fZ\r./gen;user_pbb\x06proto3"
+	"\rmain_photo_id\x18\x02 \x01(\x05R\vmainPhotoId\"H\n" +
+	"\x14MultipleReadResponse\x120\n" +
+	"\rgrid_profiles\x18\x01 \x03(\v2\v.SingleReadR\fgridProfilesB\x0fZ\r./gen;user_pbb\x06proto3"
 
 var (
 	file_user_responses_proto_rawDescOnce sync.Once
@@ -142,11 +143,11 @@ func file_user_responses_proto_rawDescGZIP() []byte {
 
 var file_user_responses_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_user_responses_proto_goTypes = []any{
-	(*ReadMulitple)(nil),         // 0: ReadMulitple
-	(*ReadMultipleResponse)(nil), // 1: ReadMultipleResponse
+	(*SingleRead)(nil),           // 0: SingleRead
+	(*MultipleReadResponse)(nil), // 1: MultipleReadResponse
 }
 var file_user_responses_proto_depIdxs = []int32{
-	0, // 0: ReadMultipleResponse.res:type_name -> ReadMulitple
+	0, // 0: MultipleReadResponse.grid_profiles:type_name -> SingleRead
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

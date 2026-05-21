@@ -8,7 +8,7 @@ import "user_responses.proto";
 service UserService {
     rpc Create (UserProfile) returns (UserProfile);
     rpc Read (IdRequest) returns (UserProfile);
-    rpc ReadMultiple (ReadMultipleRequest) returns (ReadMultipleResponse);
+    rpc ReadMultiple (MultipleReadRequest) returns (MultipleReadResponse);
     rpc Update (UserProfile) returns (UserProfile);
     rpc Delete (IdRequest) returns (UserProfile);
 }

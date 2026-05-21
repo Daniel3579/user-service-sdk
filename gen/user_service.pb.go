@@ -103,7 +103,7 @@ const file_user_service_proto_rawDesc = "" +
 	"\x06Create\x12\f.UserProfile\x1a\f.UserProfile\x12 \n" +
 	"\x04Read\x12\n" +
 	".IdRequest\x1a\f.UserProfile\x12;\n" +
-	"\fReadMultiple\x12\x14.ReadMultipleRequest\x1a\x15.ReadMultipleResponse\x12$\n" +
+	"\fReadMultiple\x12\x14.MultipleReadRequest\x1a\x15.MultipleReadResponse\x12$\n" +
 	"\x06Update\x12\f.UserProfile\x1a\f.UserProfile\x12\"\n" +
 	"\x06Delete\x12\n" +
 	".IdRequest\x1a\f.UserProfileB\x0fZ\r./gen;user_pbb\x06proto3"
@@ -124,18 +124,18 @@ var file_user_service_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_user_service_proto_goTypes = []any{
 	(*UserProfile)(nil),          // 0: UserProfile
 	(*IdRequest)(nil),            // 1: IdRequest
-	(*ReadMultipleRequest)(nil),  // 2: ReadMultipleRequest
-	(*ReadMultipleResponse)(nil), // 3: ReadMultipleResponse
+	(*MultipleReadRequest)(nil),  // 2: MultipleReadRequest
+	(*MultipleReadResponse)(nil), // 3: MultipleReadResponse
 }
 var file_user_service_proto_depIdxs = []int32{
 	0, // 0: UserService.Create:input_type -> UserProfile
 	1, // 1: UserService.Read:input_type -> IdRequest
-	2, // 2: UserService.ReadMultiple:input_type -> ReadMultipleRequest
+	2, // 2: UserService.ReadMultiple:input_type -> MultipleReadRequest
 	0, // 3: UserService.Update:input_type -> UserProfile
 	1, // 4: UserService.Delete:input_type -> IdRequest
 	0, // 5: UserService.Create:output_type -> UserProfile
 	0, // 6: UserService.Read:output_type -> UserProfile
-	3, // 7: UserService.ReadMultiple:output_type -> ReadMultipleResponse
+	3, // 7: UserService.ReadMultiple:output_type -> MultipleReadResponse
 	0, // 8: UserService.Update:output_type -> UserProfile
 	0, // 9: UserService.Delete:output_type -> UserProfile
 	5, // [5:10] is the sub-list for method output_type

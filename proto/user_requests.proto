@@ -6,6 +6,6 @@ message IdRequest {
     int32 user_id = 1;
 }
 
-message ReadMultipleRequest {
-    repeated IdRequest req = 1;
+message MultipleReadRequest {
+    repeated IdRequest user_ids = 1;
 }

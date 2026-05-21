@@ -32,7 +32,7 @@ const (
 type UserServiceClient interface {
 	Create(ctx context.Context, in *UserProfile, opts ...grpc.CallOption) (*UserProfile, error)
 	Read(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserProfile, error)
-	ReadMultiple(ctx context.Context, in *ReadMultipleRequest, opts ...grpc.CallOption) (*ReadMultipleResponse, error)
+	ReadMultiple(ctx context.Context, in *MultipleReadRequest, opts ...grpc.CallOption) (*MultipleReadResponse, error)
 	Update(ctx context.Context, in *UserProfile, opts ...grpc.CallOption) (*UserProfile, error)
 	Delete(ctx context.Context, in *IdRequest, opts ...grpc.CallOption) (*UserProfile, error)
 }
@@ -65,9 +65,9 @@ func (c *userServiceClient) Read(ctx context.Context, in *IdRequest, opts ...grp
 	return out, nil
 }
 
-func (c *userServiceClient) ReadMultiple(ctx context.Context, in *ReadMultipleRequest, opts ...grpc.CallOption) (*ReadMultipleResponse, error) {
+func (c *userServiceClient) ReadMultiple(ctx context.Context, in *MultipleReadRequest, opts ...grpc.CallOption) (*MultipleReadResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReadMultipleResponse)
+	out := new(MultipleReadResponse)
 	err := c.cc.Invoke(ctx, UserService_ReadMultiple_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -101,7 +101,7 @@ func (c *userServiceClient) Delete(ctx context.Context, in *IdRequest, opts ...g
 type UserServiceServer interface {
 	Create(context.Context, *UserProfile) (*UserProfile, error)
 	Read(context.Context, *IdRequest) (*UserProfile, error)
-	ReadMultiple(context.Context, *ReadMultipleRequest) (*ReadMultipleResponse, error)
+	ReadMultiple(context.Context, *MultipleReadRequest) (*MultipleReadResponse, error)
 	Update(context.Context, *UserProfile) (*UserProfile, error)
 	Delete(context.Context, *IdRequest) (*UserProfile, error)
 	mustEmbedUnimplementedUserServiceServer()
@@ -120,7 +120,7 @@ func (UnimplementedUserServiceServer) Create(context.Context, *UserProfile) (*Us
 func (UnimplementedUserServiceServer) Read(context.Context, *IdRequest) (*UserProfile, error) {
 	return nil, status.Error(codes.Unimplemented, "method Read not implemented")
 }
-func (UnimplementedUserServiceServer) ReadMultiple(context.Context, *ReadMultipleRequest) (*ReadMultipleResponse, error) {
+func (UnimplementedUserServiceServer) ReadMultiple(context.Context, *MultipleReadRequest) (*MultipleReadResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ReadMultiple not implemented")
 }
 func (UnimplementedUserServiceServer) Update(context.Context, *UserProfile) (*UserProfile, error) {
@@ -187,7 +187,7 @@ func _UserService_Read_Handler(srv interface{}, ctx context.Context, dec func(in
 }
 
 func _UserService_ReadMultiple_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReadMultipleRequest)
+	in := new(MultipleReadRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -199,7 +199,7 @@ func _UserService_ReadMultiple_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: UserService_ReadMultiple_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).ReadMultiple(ctx, req.(*ReadMultipleRequest))
+		return srv.(UserServiceServer).ReadMultiple(ctx, req.(*MultipleReadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

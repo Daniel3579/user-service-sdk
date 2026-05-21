@@ -65,27 +65,27 @@ func (x *IdRequest) GetUserId() int32 {
 	return 0
 }
 
-type ReadMultipleRequest struct {
+type MultipleReadRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Req           []*IdRequest           `protobuf:"bytes,1,rep,name=req,proto3" json:"req,omitempty"`
+	UserIds       []*IdRequest           `protobuf:"bytes,1,rep,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ReadMultipleRequest) Reset() {
-	*x = ReadMultipleRequest{}
+func (x *MultipleReadRequest) Reset() {
+	*x = MultipleReadRequest{}
 	mi := &file_user_requests_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ReadMultipleRequest) String() string {
+func (x *MultipleReadRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ReadMultipleRequest) ProtoMessage() {}
+func (*MultipleReadRequest) ProtoMessage() {}
 
-func (x *ReadMultipleRequest) ProtoReflect() protoreflect.Message {
+func (x *MultipleReadRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_user_requests_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -97,14 +97,14 @@ func (x *ReadMultipleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ReadMultipleRequest.ProtoReflect.Descriptor instead.
-func (*ReadMultipleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use MultipleReadRequest.ProtoReflect.Descriptor instead.
+func (*MultipleReadRequest) Descriptor() ([]byte, []int) {
 	return file_user_requests_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ReadMultipleRequest) GetReq() []*IdRequest {
+func (x *MultipleReadRequest) GetUserIds() []*IdRequest {
 	if x != nil {
-		return x.Req
+		return x.UserIds
 	}
 	return nil
 }
@@ -115,10 +115,10 @@ const file_user_requests_proto_rawDesc = "" +
 	"\n" +
 	"\x13user_requests.proto\"$\n" +
 	"\tIdRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\"3\n" +
-	"\x13ReadMultipleRequest\x12\x1c\n" +
-	"\x03req\x18\x01 \x03(\v2\n" +
-	".IdRequestR\x03reqB\x0fZ\r./gen;user_pbb\x06proto3"
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\"<\n" +
+	"\x13MultipleReadRequest\x12%\n" +
+	"\buser_ids\x18\x01 \x03(\v2\n" +
+	".IdRequestR\auserIdsB\x0fZ\r./gen;user_pbb\x06proto3"
 
 var (
 	file_user_requests_proto_rawDescOnce sync.Once
@@ -135,10 +135,10 @@ func file_user_requests_proto_rawDescGZIP() []byte {
 var file_user_requests_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_user_requests_proto_goTypes = []any{
 	(*IdRequest)(nil),           // 0: IdRequest
-	(*ReadMultipleRequest)(nil), // 1: ReadMultipleRequest
+	(*MultipleReadRequest)(nil), // 1: MultipleReadRequest
 }
 var file_user_requests_proto_depIdxs = []int32{
-	0, // 0: ReadMultipleRequest.req:type_name -> IdRequest
+	0, // 0: MultipleReadRequest.user_ids:type_name -> IdRequest
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
