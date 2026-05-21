@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "./gen;user_pb";
+
+message IdRequest {
+    int32 user_id = 1;
+}
+
+message ReadMultipleRequest {
+    repeated IdRequest req = 1;
+}
